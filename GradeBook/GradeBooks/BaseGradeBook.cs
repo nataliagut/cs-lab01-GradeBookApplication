@@ -6,11 +6,13 @@ using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace GradeBook.GradeBooks
 {
     public class BaseGradeBook
     {
+        public GradeBookType Type;
         public string Name { get; set; }
         public List<Student> Students { get; set; }
 
