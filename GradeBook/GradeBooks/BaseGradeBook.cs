@@ -12,10 +12,11 @@ namespace GradeBook.GradeBooks
 {
     public class BaseGradeBook
     {
+       
         public GradeBookType Type;
         public string Name { get; set; }
         public List<Student> Students { get; set; }
-
+        
         public BaseGradeBook(string name)
         {
             Name = name;
@@ -27,6 +28,7 @@ namespace GradeBook.GradeBooks
             if (string.IsNullOrEmpty(student.Name))
                 throw new ArgumentException("A Name is required to add a student to a gradebook.");
             Students.Add(student);
+            
         }
 
         public void RemoveStudent(string name)
