@@ -7,19 +7,21 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Security.Cryptography.X509Certificates;
+using System.Dynamic;
 
 namespace GradeBook.GradeBooks
 {
     public abstract class BaseGradeBook
     {
+        public bool IsWeighted { get; set; }
         public GradeBookType Type { get; set; }
 
         public string Name { get; set; }
         public List<Student> Students { get; set; }
       
-        public BaseGradeBook(string name)
+        public BaseGradeBook(string name, bool IsWeighted)
         {
-            
+            IsWeighted = IsWeighted;
             Name = name;
             Students = new List<Student>();
         }
@@ -111,21 +113,34 @@ namespace GradeBook.GradeBooks
 
         public virtual double GetGPA(char letterGrade, StudentType studentType)
         {
+            int score = 0;
             switch (letterGrade)
             {
                 case 'A':
-                    return 4;
+                    return score =+ 4;
                 case 'B':
-                    return 3;
+                    return score = +3;
                 case 'C':
-                    return 2;
+                    return score = +2;
                 case 'D':
-                    return 1;
+                    return score = +1;
                 case 'F':
-                    return 0;
+                    return score;
+                    
+              
             }
-            return 0;
-        }
+
+            if (studentType == StudentType.Honors)
+
+                score = +1;
+
+
+            else if (studentType == StudentType.DualEnrolled)
+                score = +1;
+            else return score;
+            
+            return score;
+            }
 
         public virtual void CalculateStatistics()
         {

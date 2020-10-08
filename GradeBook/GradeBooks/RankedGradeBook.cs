@@ -51,7 +51,7 @@ namespace GradeBook.GradeBooks
                 Console.WriteLine("Ranked grading requires at least 5 students.");
             else base.CalculateStudentStatistics(name);
         }
-        public RankedGradeBook(string name) : base(name)
+        public RankedGradeBook(string name, bool IsWeighted) : base(name, IsWeighted)
         {
             this.Type = GradeBookType.Ranked;
             {
